@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.10)
 
 project(NN)
 
-set(SOURCES src/main.cpp)
+set(SOURCES tests/main.cpp)
 
 include_directories(inc)
 

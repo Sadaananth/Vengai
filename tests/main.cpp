@@ -1,10 +1,10 @@
-#include "Network.hpp"
+#include "Vengai.hpp"
 
 #include <iostream>
 
 int main()
 {
-    NetworkConfig networkConfig;
+    Vengai::NetworkConfig networkConfig;
     networkConfig.mInputCount = 2;
     networkConfig.mLayerCount = 2;
     networkConfig.mOutputCount = 1;
@@ -12,11 +12,11 @@ int main()
     networkConfig.mNodeCount.emplace_back(3);
     networkConfig.mNodeCount.emplace_back(2);
 
-    Network network(networkConfig);
+    Vengai::Network network(networkConfig);
 
-    network.train();
+    //network.train();
 
-    network.test();
+    //network.test();
 
     return 0;
 }
