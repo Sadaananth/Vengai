@@ -1,5 +1,4 @@
-#ifndef __VENGAI_HPP__
-#define __VENGAI_HPP__
+#pragma once
 
 #include <iostream>
 #include <vector>
@@ -397,4 +396,3 @@ float Network::test(const std::vector<float>& input)
 }
 
 }
-#endif

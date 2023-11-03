@@ -14,9 +14,9 @@ int main()
 
     Vengai::Network network(networkConfig);
 
-    //network.train();
+    // network.train();
 
-    //network.test();
+    // network.test();
 
     return 0;
 }

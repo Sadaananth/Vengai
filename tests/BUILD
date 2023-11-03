@@ -5,11 +5,6 @@ cc_binary(
     srcs = [
         "main.cpp",
     ],
-    # linkopts = [
-    #     "-lsfml-graphics",
-    #     "-lsfml-window",
-    #     "-lsfml-system",
-    # ],
     deps = [
         "//src:Vengai",
     ]
