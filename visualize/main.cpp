@@ -1,10 +1,13 @@
 #include "src/Vengai.hpp"
 
+#include "visualize/LinearRegression.hpp"
+
 #include <SFML/Graphics.hpp>
 
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(720, 480), "Vengai-Gui");
+    LinearRegression linearRegression;
 
     while (window.isOpen())
     {
@@ -25,6 +28,7 @@ int main()
         }
 
         window.clear();
+        linearRegression.draw(window);
         window.display();
     }
     return 0;
