@@ -1,13 +1,47 @@
 load("@rules_cc//cc:defs.bzl", "cc_library","cc_binary")
 
 cc_library(
+    name = "Node",
+    srcs = [
+        "Node.cpp",
+    ],
+    hdrs = [
+        "Node.hpp",
+    ],
+    visibility = ["//visibility:public"],
+    linkopts = [
+        "-lsfml-graphics",
+        "-lsfml-window",
+        "-lsfml-system",
+    ],
+)
+
+cc_library(
+    name = "Layer",
+    srcs = [
+        "Layer.cpp",
+    ],
+    hdrs = [
+        "Layer.hpp",
+    ],
+    visibility = ["//visibility:public"],
+    linkopts = [
+        "-lsfml-graphics",
+        "-lsfml-window",
+        "-lsfml-system",
+    ],
+    deps = [
+        ":Node",
+    ]
+)
+
+cc_library(
     name = "LinearRegression",
     srcs = [
         "LinearRegression.cpp",
     ],
     hdrs = [
         "LinearRegression.hpp",
-        "Node.hpp",
     ],
     visibility = ["//visibility:public"],
     linkopts = [
@@ -17,6 +51,7 @@ cc_library(
     ],
     deps = [
         "//src:Vengai",
+        ":Layer",
     ]
 )
 

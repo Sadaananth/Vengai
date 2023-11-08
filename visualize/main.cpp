@@ -6,7 +6,7 @@
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(720, 480), "Vengai-Gui");
+    sf::RenderWindow window(sf::VideoMode(1080, 720), "Vengai-Gui");
     LinearRegression linearRegression;
 
     while (window.isOpen())
