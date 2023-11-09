@@ -10,13 +10,13 @@
 class LinearRegression
 {
 public:
-    LinearRegression();
+    LinearRegression(Vengai::NetworkConfig&& config);
 
     void draw(sf::RenderWindow& window);
 private:
+    Vengai::NetworkConfig mNetworkConfig;
+
     Layer mInputLayer;
     std::vector<Layer> mHiddenLayer;
     Layer mOutputLayer;
-
-    Vengai::NetworkConfig networkConfig;
 };

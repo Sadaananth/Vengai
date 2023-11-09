@@ -7,6 +7,18 @@ Node::Node(Property property)
 {
     mInput.setFillColor(sf::Color::Blue);
     mOutput.setFillColor(sf::Color::Green);
+
+    if(!mTextFont.loadFromFile("resources/Test.ttf")) {
+        throw std::runtime_error("Failed to load font");
+    }
+    mText.setFont(mTextFont);
+    mText.setCharacterSize(50);
+    mText.setFillColor(sf::Color::Green);
+}
+
+void Node::setText(const std::string& text)
+{
+    mText.setString(text);
 }
 
 void Node::setPosition(const sf::Vector2f& position)

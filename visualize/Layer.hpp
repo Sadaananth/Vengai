@@ -6,7 +6,7 @@
 
 struct Layer
 {
-    Layer(uint8_t count, Node::Property property);
+    Layer(uint8_t count, Node::Property property, const std::string& name);
 
     void draw(sf::RenderWindow& window);
 

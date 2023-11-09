@@ -14,6 +14,9 @@ cc_library(
         "-lsfml-window",
         "-lsfml-system",
     ],
+    data = [
+        "//resources:Assets",
+    ],
 )
 
 cc_library(
@@ -56,6 +59,23 @@ cc_library(
 )
 
 cc_library(
+    name = "Menu",
+    srcs = [ "Menu.cpp" ],
+    hdrs = [
+        "Menu.hpp",
+    ],
+    visibility = ["//visibility:public"],
+    linkopts = [
+        "-lsfml-graphics",
+        "-lsfml-window",
+        "-lsfml-system",
+    ],
+    deps = [
+        ":LinearRegression",
+    ]
+)
+
+cc_library(
     name = "Application",
     srcs = [ "Application.cpp" ],
     hdrs = [
@@ -69,6 +89,7 @@ cc_library(
     ],
     deps = [
         ":LinearRegression",
+        ":Menu",
     ]
 )
 

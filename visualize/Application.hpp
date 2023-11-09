@@ -24,5 +24,5 @@ private:
     ApplicationConfig mConfig;
     sf::RenderWindow mWindow;
 
-    LinearRegression mLinearRegression;
+    std::unique_ptr<LinearRegression> mLinearRegression;
 };

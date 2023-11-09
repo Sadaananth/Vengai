@@ -2,6 +2,7 @@
 
 #include <SFML/Graphics/RectangleShape.hpp>
 #include <SFML/Graphics/Text.hpp>
+#include <SFML/Graphics/Font.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
 
 #include <iostream>
@@ -18,6 +19,7 @@ public:
 
     Node(Property property = Property::Both);
 
+    void setText(const std::string& text);
     void setPosition(const sf::Vector2f& position);
     void setSize(const sf::Vector2f& size);
 
@@ -41,6 +43,7 @@ private:
     sf::RectangleShape mInput;
     sf::RectangleShape mOutput;
     sf::Text mText;
+    sf::Font mTextFont;
 
     Property mProperty;
 };

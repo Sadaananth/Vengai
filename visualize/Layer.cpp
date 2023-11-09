@@ -1,6 +1,6 @@
 #include "visualize/Layer.hpp"
 
-Layer::Layer(uint8_t count, Node::Property property)
+Layer::Layer(uint8_t count, Node::Property property, const std::string& name)
 {
     mNodes.assign(count, Node::Property::Both);
 
@@ -8,6 +8,7 @@ Layer::Layer(uint8_t count, Node::Property property)
     for(auto& node : mNodes) {
         node.setSize(sf::Vector2f(100, 100));
         node.setPosition(sf::Vector2f(0, index));
+        node.setText(name);
         index = index + 150;
     }
 }
