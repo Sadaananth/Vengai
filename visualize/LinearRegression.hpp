@@ -1,5 +1,6 @@
 #pragma once
 
+#include "src/Vengai.hpp"
 #include "visualize/Layer.hpp"
 
 #include <SFML/Graphics/RenderWindow.hpp>
@@ -16,4 +17,6 @@ private:
     Layer mInputLayer;
     std::vector<Layer> mHiddenLayer;
     Layer mOutputLayer;
+
+    Vengai::NetworkConfig networkConfig;
 };

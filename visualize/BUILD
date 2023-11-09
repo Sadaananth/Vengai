@@ -55,6 +55,23 @@ cc_library(
     ]
 )
 
+cc_library(
+    name = "Application",
+    srcs = [ "Application.cpp" ],
+    hdrs = [
+        "Application.hpp",
+    ],
+    visibility = ["//visibility:public"],
+    linkopts = [
+        "-lsfml-graphics",
+        "-lsfml-window",
+        "-lsfml-system",
+    ],
+    deps = [
+        ":LinearRegression",
+    ]
+)
+
 cc_binary(
     name = "Vengai-gui",
     srcs = [
@@ -67,6 +84,6 @@ cc_binary(
         "-lsfml-system",
     ],
     deps = [
-        ":LinearRegression",
+        ":Application",
     ]
 )
