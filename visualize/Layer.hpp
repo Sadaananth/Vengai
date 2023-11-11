@@ -10,6 +10,8 @@ struct Layer
 
     void draw(sf::RenderWindow& window);
 
+    void setSize(sf::Vector2f size);
+    void setPostion(sf::Vector2f postion);
 private:
     std::vector<Node> mNodes;
 };

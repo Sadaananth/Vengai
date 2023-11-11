@@ -2,14 +2,9 @@
 
 Layer::Layer(uint8_t count, Node::Property property, const std::string& name)
 {
-    mNodes.assign(count, Node::Property::Both);
-
-    uint32_t index = 0;
+    mNodes.assign(count, property);
     for(auto& node : mNodes) {
-        node.setSize(sf::Vector2f(100, 100));
-        node.setPosition(sf::Vector2f(0, index));
         node.setText(name);
-        index = index + 150;
     }
 }
 
@@ -17,5 +12,19 @@ void Layer::draw(sf::RenderWindow& window)
 {
     for(auto& node : mNodes) {
         node.draw(window);
+    }
+}
+
+void Layer::setSize(sf::Vector2f size)
+{
+    for(auto& node : mNodes) {
+        node.setSize(size);
+    }
+}
+
+void Layer::setPostion(sf::Vector2f postion)
+{
+    for(auto& node : mNodes) {
+        node.setPosition(postion);
     }
 }

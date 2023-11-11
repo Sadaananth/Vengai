@@ -14,6 +14,8 @@ public:
 
     void draw(sf::RenderWindow& window);
 private:
+    void setLayerPosition();
+
     Vengai::NetworkConfig mNetworkConfig;
 
     Layer mInputLayer;

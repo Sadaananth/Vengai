@@ -2,11 +2,41 @@
 
 #include <SFML/Graphics/Color.hpp>
 
+namespace {
+auto getInputColor(Node::Property property) -> sf::Color
+{
+    switch(property) {
+        case Node::Property::InputOnly:
+            return sf::Color::Black;
+        case Node::Property::OutputOnly:
+            return sf::Color::Green;
+        case Node::Property::Both:
+            return sf::Color::Yellow;
+    }
+
+    throw std::runtime_error("Unknown property received");
+}
+
+auto getOutputColor(Node::Property property) -> sf::Color
+{
+    switch(property) {
+        case Node::Property::InputOnly:
+            return sf::Color::Green;
+        case Node::Property::OutputOnly:
+            return sf::Color::Black;
+        case Node::Property::Both:
+            return sf::Color::Magenta;
+    }
+
+    throw std::runtime_error("Unknown property received");
+}
+}
+
 Node::Node(Property property)
     : mProperty(property)
 {
-    mInput.setFillColor(sf::Color::Blue);
-    mOutput.setFillColor(sf::Color::Green);
+    mInput.setFillColor(getInputColor(mProperty));
+    mOutput.setFillColor(getOutputColor(mProperty));
 
     if(!mTextFont.loadFromFile("resources/Test.ttf")) {
         throw std::runtime_error("Failed to load font");
@@ -43,19 +73,23 @@ void Node::setSize(const sf::Vector2f& size)
 
 void Node::draw(sf::RenderWindow& window)
 {
-    window.draw(mOutline);
-    window.draw(mText);
+    try {
+        window.draw(mOutline);
+        // window.draw(mText);
 
-    switch(mProperty) {
-        case Property::InputOnly:
-            window.draw(mInput);
-            break;
-        case Property::OutputOnly:
-            window.draw(mOutput);
-            break;
-        case Property::Both:
-            window.draw(mInput);
-            window.draw(mOutput);
-            break;
+        switch(mProperty) {
+            case Property::InputOnly:
+                window.draw(mInput);
+                break;
+            case Property::OutputOnly:
+                window.draw(mOutput);
+                break;
+            case Property::Both:
+                window.draw(mInput);
+                window.draw(mOutput);
+                break;
+        }
+    } catch(...) {
+        std::cerr << "Exception occured" << std::endl;
     }
 }
