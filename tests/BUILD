@@ -7,5 +7,5 @@ cc_binary(
     ],
     deps = [
         "//src:Vengai",
-    ]
+    ],
 )

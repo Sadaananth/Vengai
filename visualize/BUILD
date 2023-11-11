@@ -1,4 +1,4 @@
-load("@rules_cc//cc:defs.bzl", "cc_library","cc_binary")
+load("@rules_cc//cc:defs.bzl", "cc_binary", "cc_library")
 
 cc_library(
     name = "Node",
@@ -8,15 +8,15 @@ cc_library(
     hdrs = [
         "Node.hpp",
     ],
-    visibility = ["//visibility:public"],
+    data = [
+        "//resources:Assets",
+    ],
     linkopts = [
         "-lsfml-graphics",
         "-lsfml-window",
         "-lsfml-system",
     ],
-    data = [
-        "//resources:Assets",
-    ],
+    visibility = ["//visibility:public"],
 )
 
 cc_library(
@@ -27,15 +27,15 @@ cc_library(
     hdrs = [
         "Layer.hpp",
     ],
-    visibility = ["//visibility:public"],
     linkopts = [
         "-lsfml-graphics",
         "-lsfml-window",
         "-lsfml-system",
     ],
+    visibility = ["//visibility:public"],
     deps = [
         ":Node",
-    ]
+    ],
 )
 
 cc_library(
@@ -46,51 +46,51 @@ cc_library(
     hdrs = [
         "LinearRegression.hpp",
     ],
-    visibility = ["//visibility:public"],
     linkopts = [
         "-lsfml-graphics",
         "-lsfml-window",
         "-lsfml-system",
     ],
+    visibility = ["//visibility:public"],
     deps = [
-        "//src:Vengai",
         ":Layer",
-    ]
+        "//src:Vengai",
+    ],
 )
 
 cc_library(
     name = "Menu",
-    srcs = [ "Menu.cpp" ],
+    srcs = ["Menu.cpp"],
     hdrs = [
         "Menu.hpp",
     ],
-    visibility = ["//visibility:public"],
     linkopts = [
         "-lsfml-graphics",
         "-lsfml-window",
         "-lsfml-system",
     ],
+    visibility = ["//visibility:public"],
     deps = [
         ":LinearRegression",
-    ]
+    ],
 )
 
 cc_library(
     name = "Application",
-    srcs = [ "Application.cpp" ],
+    srcs = ["Application.cpp"],
     hdrs = [
         "Application.hpp",
     ],
-    visibility = ["//visibility:public"],
     linkopts = [
         "-lsfml-graphics",
         "-lsfml-window",
         "-lsfml-system",
     ],
+    visibility = ["//visibility:public"],
     deps = [
         ":LinearRegression",
         ":Menu",
-    ]
+    ],
 )
 
 cc_binary(
@@ -98,13 +98,13 @@ cc_binary(
     srcs = [
         "main.cpp",
     ],
-    visibility = ["//visibility:public"],
     linkopts = [
         "-lsfml-graphics",
         "-lsfml-window",
         "-lsfml-system",
     ],
+    visibility = ["//visibility:public"],
     deps = [
         ":Application",
-    ]
+    ],
 )
