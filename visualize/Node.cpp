@@ -30,7 +30,7 @@ auto getOutputColor(Node::Property property) -> sf::Color
 
     throw std::runtime_error("Unknown property received");
 }
-}
+} // namespace
 
 Node::Node(Property property)
     : mProperty(property)

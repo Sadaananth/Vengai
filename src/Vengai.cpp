@@ -9,7 +9,7 @@ namespace Vengai
 
 constexpr float GRADIENT_SCALE_FACTOR = 1.5f;
 
-constexpr float square(float input)
+float square(float input)
 {
     return fabs(input) * fabs(input);
 }
@@ -42,7 +42,7 @@ float SigmoidTransient(const float input)
 }
 
 Layer::Layer(LayerType layerType, uint16_t LayerNumber, uint16_t numberOfNodes, uint16_t numberOfInputs)
-    : mLayerType(layerType), mNodeCount(numberOfNodes), mInputCount(numberOfInputs), mLayerNumber(LayerNumber)
+    : mLayerType(layerType), mNodeCount(numberOfNodes)
 {
     for(uint16_t NodeIndex = 0; NodeIndex < mNodeCount; NodeIndex++)
     {

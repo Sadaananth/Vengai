@@ -59,7 +59,7 @@ http_archive(
 load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
 
 git_repository(
-       name = "bazel_clang_tidy",
-       commit = "d21d797d6e61c7e740662d1265cacbb8b935b44b",
-       remote = "https://github.com/erenon/bazel_clang_tidy.git",
+    name = "bazel_clang_tidy",
+    commit = "d21d797d6e61c7e740662d1265cacbb8b935b44b",
+    remote = "https://github.com/erenon/bazel_clang_tidy.git",
 )

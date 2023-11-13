@@ -21,8 +21,6 @@ class Layer
 {
     LayerType mLayerType;
     uint16_t mNodeCount;
-    uint16_t mInputCount;
-    uint16_t mLayerNumber;
 
     /**
      * @brief Input Weights list also contains biases.
@@ -54,10 +52,10 @@ public:
 
 struct NetworkConfig
 {
-    uint16_t mLayerCount;
-    uint16_t mInputCount;
-    uint16_t mOutputCount;
-    std::vector<uint16_t> mNodeCount;
+    uint16_t mLayerCount{0};
+    uint16_t mInputCount{0};
+    uint16_t mOutputCount{0};
+    std::vector<uint16_t> mNodeCount{};
 };
 
 using NetworkInputType = std::vector<std::vector<float>>;
@@ -70,10 +68,10 @@ class Network
 
     void initLayers();
 public:
-    Network(const NetworkConfig& networkConfig);
+    explicit Network(const NetworkConfig& networkConfig);
 
     void train(const NetworkInputType& input, const NetworkOutputType& output);
     float test(const std::vector<float>& input);
 };
 
-}
+} // namespace Vengai

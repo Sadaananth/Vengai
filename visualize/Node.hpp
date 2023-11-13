@@ -17,7 +17,7 @@ public:
         Both
     };
 
-    Node(Property property = Property::Both);
+    explicit Node(Property property = Property::Both);
 
     void setText(const std::string& text);
     void setPosition(const sf::Vector2f& position);

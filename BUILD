@@ -5,7 +5,7 @@ buildifier(
 )
 
 filegroup(
-       name = "clang_tidy_config",
-       srcs = [".clang-tidy"],
-       visibility = ["//visibility:public"],
+    name = "clang_tidy_config",
+    srcs = [".clang-tidy"],
+    visibility = ["//visibility:public"],
 )
