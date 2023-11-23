@@ -42,14 +42,10 @@ void LinearRegression::setLayerPosition()
     uint32_t VerticalNodeSpaceCount = maxNodeinLayer + 1;
     uint32_t nodeHeight = (applicationHeight - VerticalNodeSpaceCount) / maxNodeinLayer;
 
-    std::cout << "NodeSpace: " << NodeSpace << std::endl;
-    std::cout << "nodeWidth: " << nodeWidth << std::endl;
-    std::cout << "nodeHeight: " << nodeHeight << std::endl;
-
     uint32_t widthOffset = 0;
     auto setSizePosition = [&widthOffset, NodeSpace, nodeHeight, nodeWidth](Layer& layer) {
-        layer.setPostion(sf::Vector2f(widthOffset + NodeSpace, NodeSpace));
         layer.setSize(sf::Vector2f(nodeWidth, nodeHeight));
+        layer.setPostion(sf::Vector2f(widthOffset + NodeSpace, NodeSpace));
         widthOffset += NodeSpace + nodeWidth;
     };
     setSizePosition(mInputLayer);

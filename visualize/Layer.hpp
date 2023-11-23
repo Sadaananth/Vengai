@@ -4,6 +4,8 @@
 
 #include <SFML/Graphics/RenderWindow.hpp>
 
+#include <memory>
+
 struct Layer
 {
     Layer(uint8_t count, Node::Property property, const std::string& name);
@@ -13,5 +15,6 @@ struct Layer
     void setSize(sf::Vector2f size);
     void setPostion(sf::Vector2f postion);
 private:
-    std::vector<Node> mNodes;
+    std::vector<std::shared_ptr<Node>> mNodes;
+    Node mTestNode;
 };

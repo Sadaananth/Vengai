@@ -7,7 +7,7 @@ auto getInputColor(Node::Property property) -> sf::Color
 {
     switch(property) {
         case Node::Property::InputOnly:
-            return sf::Color::Black;
+            return sf::Color::Cyan;
         case Node::Property::OutputOnly:
             return sf::Color::Green;
         case Node::Property::Both:
@@ -23,7 +23,7 @@ auto getOutputColor(Node::Property property) -> sf::Color
         case Node::Property::InputOnly:
             return sf::Color::Green;
         case Node::Property::OutputOnly:
-            return sf::Color::Black;
+            return sf::Color::Cyan;
         case Node::Property::Both:
             return sf::Color::Magenta;
     }
@@ -59,6 +59,16 @@ void Node::setPosition(const sf::Vector2f& position)
     const auto outlineSize = mOutline.getSize();
     mInput.setPosition(position.x, position.y + outlineSize.y / 2);
     mOutput.setPosition(position.x + outlineSize.x / 2, position.y + outlineSize.y / 2);
+
+    // const auto text = mText.getString().toAnsiString();
+    // auto pos = mOutline.getPosition();
+    // std::cout << text << " outline " << pos.x << "," << pos.y << std::endl;
+
+    // pos = mInput.getPosition();
+    // std::cout << text << " input " << pos.x << "," << pos.y << std::endl;
+
+    // pos = mOutput.getPosition();
+    // std::cout << text << " output " << pos.x << "," << pos.y << std::endl;
 }
 
 void Node::setSize(const sf::Vector2f& size)
@@ -75,20 +85,9 @@ void Node::draw(sf::RenderWindow& window)
 {
     try {
         window.draw(mOutline);
-        // window.draw(mText);
-
-        switch(mProperty) {
-            case Property::InputOnly:
-                window.draw(mInput);
-                break;
-            case Property::OutputOnly:
-                window.draw(mOutput);
-                break;
-            case Property::Both:
-                window.draw(mInput);
-                window.draw(mOutput);
-                break;
-        }
+        window.draw(mText);
+        window.draw(mInput);
+        window.draw(mOutput);
     } catch(...) {
         std::cerr << "Exception occured" << std::endl;
     }
