@@ -106,5 +106,6 @@ cc_binary(
     visibility = ["//visibility:public"],
     deps = [
         ":Application",
+        "@SadaLogger",
     ],
 )

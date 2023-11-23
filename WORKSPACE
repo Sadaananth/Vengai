@@ -63,3 +63,7 @@ git_repository(
     commit = "d21d797d6e61c7e740662d1265cacbb8b935b44b",
     remote = "https://github.com/erenon/bazel_clang_tidy.git",
 )
+
+load("//third_party:repo.bzl", "load_all_lib")
+
+load_all_lib()
