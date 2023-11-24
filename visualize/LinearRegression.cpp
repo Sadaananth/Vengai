@@ -1,5 +1,9 @@
 #include "visualize/LinearRegression.hpp"
 
+#include "src/Logger.hpp"
+
+using namespace Sada;
+
 LinearRegression::LinearRegression(Vengai::NetworkConfig&& config)
     : mNetworkConfig(std::move(config))
     , mInputLayer(mNetworkConfig.mInputCount, Node::Property::InputOnly, "Input")
@@ -30,7 +34,7 @@ void LinearRegression::setLayerPosition()
 
     uint32_t layerCount = mHiddenLayer.size() + 2;
     uint32_t NodeSpaceCount = layerCount + 1;
-    uint32_t nodeWidth = (applicationWidth - NodeSpaceCount) / layerCount;
+    uint32_t nodeWidth = (applicationWidth - NodeSpaceCount * NodeSpace) / layerCount;
 
     uint32_t maxNodeinLayer = mNetworkConfig.mInputCount > mNetworkConfig.mOutputCount ? mNetworkConfig.mInputCount : mNetworkConfig.mOutputCount;
     for(auto nodeCount : mNetworkConfig.mNodeCount) {
@@ -40,7 +44,7 @@ void LinearRegression::setLayerPosition()
     }
 
     uint32_t VerticalNodeSpaceCount = maxNodeinLayer + 1;
-    uint32_t nodeHeight = (applicationHeight - VerticalNodeSpaceCount) / maxNodeinLayer;
+    uint32_t nodeHeight = (applicationHeight - VerticalNodeSpaceCount * NodeSpace) / maxNodeinLayer;
 
     uint32_t widthOffset = 0;
     auto setSizePosition = [&widthOffset, NodeSpace, nodeHeight, nodeWidth](Layer& layer) {

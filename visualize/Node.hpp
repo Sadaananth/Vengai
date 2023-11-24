@@ -24,6 +24,9 @@ public:
     void setSize(const sf::Vector2f& size);
 
     void draw(sf::RenderWindow& window);
+
+    std::string getText() const;
+    sf::Vector2f getSize() const;
 private:
 
     void setInput();
@@ -46,4 +49,5 @@ private:
     sf::Font mTextFont;
 
     Property mProperty;
+    std::string mName{""};
 };

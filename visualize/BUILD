@@ -17,6 +17,7 @@ cc_library(
         "-lsfml-system",
     ],
     visibility = ["//visibility:public"],
+    deps = ["@SadaLogger"]
 )
 
 cc_library(
@@ -35,6 +36,7 @@ cc_library(
     visibility = ["//visibility:public"],
     deps = [
         ":Node",
+        "@SadaLogger",
     ],
 )
 

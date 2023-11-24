@@ -13,8 +13,9 @@ struct Layer
     void draw(sf::RenderWindow& window);
 
     void setSize(sf::Vector2f size);
-    void setPostion(sf::Vector2f postion);
+    void setPostion(sf::Vector2f position);
 private:
+    std::string mName;
     std::vector<std::shared_ptr<Node>> mNodes;
     Node mTestNode;
 };

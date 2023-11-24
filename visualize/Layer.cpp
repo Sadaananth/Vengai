@@ -1,10 +1,16 @@
 #include "visualize/Layer.hpp"
 
+#include "src/Logger.hpp"
+
+using namespace Sada;
+
 Layer::Layer(uint8_t count, Node::Property property, const std::string& name)
+    : mName(name)
 {
-    mNodes.assign(count, std::make_shared<Node>(property));
-    for(auto& node : mNodes) {
-        node->setText(name);
+    for(auto index = 0; index < count; index++) {
+        auto node = std::make_shared<Node>(property);
+        node->setText(mName + std::to_string(index));
+        mNodes.emplace_back(node);
     }
 }
 
@@ -22,9 +28,12 @@ void Layer::setSize(sf::Vector2f size)
     }
 }
 
-void Layer::setPostion(sf::Vector2f postion)
+void Layer::setPostion(sf::Vector2f position)
 {
+    auto nodePosition = position;
     for(auto& node : mNodes) {
-        node->setPosition(postion);
+        node->setPosition(nodePosition);
+        const auto nodeSize = node->getSize();
+        nodePosition.y += nodeSize.y + 20;
     }
 }

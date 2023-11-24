@@ -2,6 +2,10 @@
 
 #include <SFML/Graphics/Color.hpp>
 
+#include "src/Logger.hpp"
+
+using namespace Sada;
+
 namespace {
 auto getInputColor(Node::Property property) -> sf::Color
 {
@@ -42,13 +46,14 @@ Node::Node(Property property)
         throw std::runtime_error("Failed to load font");
     }
     mText.setFont(mTextFont);
-    mText.setCharacterSize(50);
+    mText.setCharacterSize(40);
     mText.setFillColor(sf::Color::Green);
 }
 
 void Node::setText(const std::string& text)
 {
-    mText.setString(text);
+    mName = text;
+    mText.setString(mName);
 }
 
 void Node::setPosition(const sf::Vector2f& position)
@@ -59,16 +64,6 @@ void Node::setPosition(const sf::Vector2f& position)
     const auto outlineSize = mOutline.getSize();
     mInput.setPosition(position.x, position.y + outlineSize.y / 2);
     mOutput.setPosition(position.x + outlineSize.x / 2, position.y + outlineSize.y / 2);
-
-    // const auto text = mText.getString().toAnsiString();
-    // auto pos = mOutline.getPosition();
-    // std::cout << text << " outline " << pos.x << "," << pos.y << std::endl;
-
-    // pos = mInput.getPosition();
-    // std::cout << text << " input " << pos.x << "," << pos.y << std::endl;
-
-    // pos = mOutput.getPosition();
-    // std::cout << text << " output " << pos.x << "," << pos.y << std::endl;
 }
 
 void Node::setSize(const sf::Vector2f& size)
@@ -91,4 +86,14 @@ void Node::draw(sf::RenderWindow& window)
     } catch(...) {
         std::cerr << "Exception occured" << std::endl;
     }
+}
+
+std::string Node::getText() const
+{
+    return mName;
+}
+
+sf::Vector2f Node::getSize() const
+{
+    return mOutline.getSize();
 }
